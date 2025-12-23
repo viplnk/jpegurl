@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Image Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e1e5eb;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .instructions {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #3498db;
+        }
+        
+        .instructions h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .instructions ol {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+        }
+        
+        .instructions code {
+            background-color: #f1f1f1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #e74c3c;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .image-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .image-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-card:hover .image-container img {
+            transform: scale(1.05);
+        }
+        
+        .image-info {
+            padding: 20px;
+        }
+        
+        .image-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .image-url {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            word-break: break-all;
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        .template {
+            background-color: #f8f9fa;
+            border: 2px dashed #bdc3c7;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 40px;
+        }
+        
+        .template h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .template-code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: monospace;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .template-code .comment {
+            color: #7f8c8d;
+        }
+        
+        .template-code .tag {
+            color: #e74c3c;
+        }
+        
+        .template-code .attribute {
+            color: #3498db;
+        }
+        
+        .template-code .value {
+            color: #2ecc71;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e5eb;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Simple Image Gallery</h1>
+        <p class="subtitle">Easily add images by copying and pasting code blocks</p>
+    </header>
+    
+    <section class="instructions">
+        <h2>How to Add More Images</h2>
+        <ol>
+            <li>Find an existing image card in the HTML code (look for the section with class "image-card")</li>
+            <li>Copy the entire block of code for one image card</li>
+            <li>Paste it right after the existing image cards (inside the <code>&lt;div class="gallery"&gt;</code> section)</li>
+            <li>Change the <code>image-title</code> and <code>image-url</code> to your new image details</li>
+            <li>Save the file and refresh your browser to see the new image</li>
+        </ol>
+        <p>See the template section below for a copy-paste ready code block.</p>
+    </section>
+    
+    <main>
+        <div class="gallery">
+            <!-- Image 1 -->
+            <div class="image-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Mountain Landscape">
+                </div>
+                <div class="image-info">
+                    <h3 class="image-title">Mountain Landscape</h3>
+                    <p class="image-url">https://images.unsplash.com/photo-1506744038136-46273834b3fb</p>
+                </div>
+            </div>
+            
+            <!-- Image 2 -->
+            <div class="image-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="Northern Lights">
+                </div>
+                <div class="image-info">
+                    <h3 class="image-title">Northern Lights</h3>
+                    <p class="image-url">https://images.unsplash.com/photo-1519681393784-d120267933ba</p>
+                </div>
+            </div>
+            
+            <!-- Image 3 -->
+            <div class="image-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e" alt="Forest Path">
+                </div>
+                <div class="image-info">
+                    <h3 class="image-title">Forest Path</h3>
+                    <p class="image-url">https://images.unsplash.com/photo-1441974231531-c6227db76b6e</p>
+                </div>
+            </div>
+            
+            <!-- Image 4 -->
+            <div class="image-card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1475924156734-496f6cac6ec1" alt="Ocean Waves">
+                </div>
+                <div class="image-info">
+                    <h3 class="image-title">Ocean Waves</h3>
+                    <p class="image-url">https://images.unsplash.com/photo-1475924156734-496f6cac6ec1</p>
+                </div>
+            </div>
+            
+            <!-- 
+                TO ADD MORE IMAGES:
+                1. Copy the entire block from <!-- Image X --> to the closing </div>
+                2. Paste it right after this comment (or after the last image card)
+                3. Change the image title and URL
+                4. Save the file and refresh your browser
+            -->
+        </div>
+        
+        <section class="template">
+            <h2>Copy-Paste Template</h2>
+            <p>Copy this code block and paste it inside the <code>&lt;div class="gallery"&gt;</code> section to add a new image:</p>
+            
+            <div class="template-code">
+                <span class="comment">&lt;!-- Image 5 --&gt;</span><br>
+                <span class="tag">&lt;div</span> <span class="attribute">class=</span><span class="value">"image-card"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class=</span><span class="value">"image-container"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;img</span> <span class="attribute">src=</span><span class="value">"PASTE-IMAGE-URL-HERE"</span> <span class="attribute">alt=</span><span class="value">"IMAGE TITLE HERE"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;/div&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attribute">class=</span><span class="value">"image-info"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h3</span> <span class="attribute">class=</span><span class="value">"image-title"</span><span class="tag">&gt;</span>IMAGE TITLE HERE<span class="tag">&lt;/h3&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p</span> <span class="attribute">class=</span><span class="value">"image-url"</span><span class="tag">&gt;</span>PASTE-IMAGE-URL-HERE<span class="tag">&lt;/p&gt;</span><br>
+                &nbsp;&nbsp;<span class="tag">&lt;/div&gt;</span><br>
+                <span class="tag">&lt;/div&gt;</span>
+            </div>
+            
+            <p><strong>Instructions:</strong> Replace "IMAGE TITLE HERE" with your image title and "PASTE-IMAGE-URL-HERE" with the direct URL to your image.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Simple Image Gallery &copy; 2023 | Add images easily by copying and pasting code blocks</p>
+    </footer>
+</body>
+</html>
